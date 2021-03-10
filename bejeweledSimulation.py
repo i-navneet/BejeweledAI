@@ -75,6 +75,19 @@ def oneMove(grid, n, n_items, source_x, source_y, dest_x, dest_y):
         totalScore = totalScore + 2 * temp
     return totalScore
 
+#gets simulated score for a swap between (source_x, source_y) and (dest_x, dest_y) without adding new tiles (please provide a deep copy of original grid for the function
+def simulatedMove(grid, n, n_items, source_x, source_y, dest_x, dest_y):
+    totalScore = 0
+    swap(grid, source_x, source_y, dest_x, dest_y)
+    totalScore = totalScore + gridSolve(grid, n)
+    while(True):
+        redrawGrid(grid, n)
+        temp = gridSolve(grid, n)
+        if(temp == 0):
+            break
+        totalScore = totalScore + 2 * temp
+    return totalScore
+
 def randomPathAgent(grid, n, n_items, n_moves):
     totalScore = 0
     solvableGrid = 0
@@ -93,5 +106,5 @@ def randomPathAgent(grid, n, n_items, n_moves):
     print(solvableGrid)
     return totalScore / solvableGrid
 grid = np.zeros((8, 8))
-print(randomPathAgent(grid, 8, 6, 20))
+print(randomPathAgent(grid, 8, 2, 20))
 
