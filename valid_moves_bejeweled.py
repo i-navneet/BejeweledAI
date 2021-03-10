@@ -16,6 +16,8 @@ def valid_moves(grid,n):
         for j in range(n):
             
             original_value = grid[i][j]
+            #if(original_value < 0):
+             #   continue
             
             if(isValid(i,j-1,n)):
                 
@@ -232,19 +234,19 @@ def valid_moves(grid,n):
     
     
     
-n = 4
-no_of_type = 4
+#n = 4
+#no_of_type = 4
 
-grid = [[3,3,1,1],[4,1,3,2],[1,2,3,3],[4,3,4,1]]
+#grid = [[3,3,1,1],[4,1,3,2],[1,2,3,3],[4,3,4,1]]
 
 '''for i in range(n):
     for j in range(n):
         
         grid[i][j] = random.randint(1,4)'''
         
-print(grid)  
-l = valid_moves(grid,n)
+#print(grid)  
+#l = valid_moves(grid,n)
 
-print(l)
+#print(l)'''
 
     
