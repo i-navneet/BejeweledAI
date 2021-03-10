@@ -105,6 +105,18 @@ def randomPathAgent(grid, n, n_items, n_moves):
         solvableGrid = solvableGrid + 1
     print(solvableGrid)
     return totalScore / solvableGrid
+def randomPath(grid, n, n_items, n_moves):
+    if(len(valid_moves_bejeweled.valid_moves(grid, n)) == 0):
+        return 0
+    totalScore = 0
+    for i in range(n_moves):
+        temp = valid_moves_bejeweled.valid_moves(grid, n)
+        if(len(temp) == 0):
+            break
+        temp1 = temp[np.random.randint(0, len(temp))]
+        del temp
+        totalScore = totalScore + oneMove(grid, n, n_items, temp1[0], temp1[1], temp1[2], temp1[3])
+    return totalScore
 grid = np.zeros((8, 8))
 print(randomPathAgent(grid, 8, 2, 20))
 
