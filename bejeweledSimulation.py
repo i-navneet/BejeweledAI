@@ -50,7 +50,7 @@ def gridSolve(grid, n):
 #rearrange the grid to make all empty tiles come to top
 def redrawGrid(grid, n):
     for j in range(n):
-        for i in range(n - 1, -1, -1):
+        for i in range(n):
             if grid[i][j] == -1:
                 for k in range(i, 0, -1):
                     swap(grid, k, j, k - 1, j)
@@ -117,6 +117,6 @@ def randomPath(grid, n, n_items, n_moves):
         del temp
         totalScore = totalScore + oneMove(grid, n, n_items, temp1[0], temp1[1], temp1[2], temp1[3])
     return totalScore
-grid = np.zeros((8, 8))
-print(randomPathAgent(grid, 8, 2, 20))
+#grid = np.zeros((8, 8))
+#print(randomPathAgent(grid, 8, 6, 20))
 
