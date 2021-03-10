@@ -1,5 +1,6 @@
 import valid_moves_bejeweled
 import numpy as np
+import random_agent_for_choosing_move
 #swaps two tiles
 def swap(grid, source_x, source_y, dest_x, dest_y):
     temp = grid[source_x][source_y]
@@ -113,7 +114,7 @@ def randomPath(grid, n, n_items, n_moves):
         temp = valid_moves_bejeweled.valid_moves(grid, n)
         if(len(temp) == 0):
             break
-        temp1 = temp[np.random.randint(0, len(temp))]
+        temp1 = random_agent_for_choosing_move.random_agent_for_choosing_move(temp,grid,n,n_items)
         del temp
         totalScore = totalScore + oneMove(grid, n, n_items, temp1[0], temp1[1], temp1[2], temp1[3])
     return totalScore
