@@ -1,5 +1,5 @@
 import random
-
+import bejeweledSimulation
 def random_agent_for_choosing_move(valid_moves_list,grid,n,n_items):
     
     moves_and_simulated_score = {}
@@ -9,7 +9,7 @@ def random_agent_for_choosing_move(valid_moves_list,grid,n,n_items):
         
         source_x,source_y,dest_x,dest_y = valid_moves_list[i]
         
-        simulated_score = simulatedMove(grid,n,n_items,source_x,source_y,dest_x,dest_y)
+        simulated_score = bijeweledSimulation.simulatedMove(grid,n,n_items,source_x,source_y,dest_x,dest_y)
         
         simulated_total_score.append(simulated_score)
     
