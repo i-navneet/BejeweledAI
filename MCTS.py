@@ -95,7 +95,7 @@ def MCTSAgent(grid, n, n_items, n_moves, C, resource):
         totalScore = totalScore + bejeweledSimulation.oneMove(grid, n, n_items, action[0], action[1], action[2], action[3])
     return totalScore
 
-def simualtedMCTS(grid, n, n_items, n_moves, C, resource):
+def simulatedMCTS(grid, n, n_items, n_moves, C, resource):
     root = node(deepcopy(grid))
     root.expansion(n, n_items)
     current = root
