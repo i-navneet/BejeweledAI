@@ -145,6 +145,6 @@ def simulatedMCTSAgent(grid, n, n_items, n_moves, C, resource):
             break
         totalScore = totalScore + bejeweledSimulation.oneMove(grid, n, n_items, action[0], action[1], action[2], action[3])
     return totalScore
-grid = np.zeros((8, 8))
-bejeweledSimulation.initGrid(grid, 8, 6)
-print(MCTSAgent(grid, 8, 6, 20, 2, 10))
+#grid = np.zeros((8, 8))
+#bejeweledSimulation.initGrid(grid, 8, 6)
+#print(MCTSAgent(grid, 8, 6, 20, 2, 10))

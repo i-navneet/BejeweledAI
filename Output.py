@@ -4,6 +4,7 @@ import MCTS
 import random_agent_for_choosing_move
 import time
 import numpy as np
+from copy import deepcopy
 
 def checkForOutput():
     RandomAgentScore = []
@@ -16,8 +17,8 @@ def checkForOutput():
     SimulatedMCTSTime = []
     grid = np.zeros((8,8))
     for j in range(1000):
-        initGrid(grid, 8, 6)
-        if(len(valid_moves_bejeweled.valid_moves(grid, n)) == 0):
+        bejeweledSimulation.initGrid(grid, 8, 6)
+        if(len(valid_moves_bejeweled.valid_moves(grid, 8)) == 0):
             continue
         initTime = time.time()
         RandomAgentScore.append(bejeweledSimulation.randomPath(deepcopy(grid), 8, 6, 40))
@@ -40,4 +41,4 @@ def checkForOutput():
     print('MCTS Agent Time :', MCTSAgentTime)
     print('Simulated MCTS Time :', SimulatedMCTSTime)
 
-        
+checkForOutput()
