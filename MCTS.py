@@ -41,7 +41,7 @@ class node:
 def rollout(grid, n, n_moves, n_items):
     return bejeweledSimulation.randomPath(grid, n, n_items, n_moves)
 
-def MCTS(grid, n, n_items, n_moves, resource):
+def MCTS(grid, n, n_items, n_moves, C, resource):
     root = node(deepcopy(grid))
     root.expansion(n, n_items)
     current = root
@@ -57,7 +57,7 @@ def MCTS(grid, n, n_items, n_moves, resource):
                     current = i
                     break
                 if i.x / i.ni + 2 * np.sqrt(np.log(current.ni) / i.ni) > max_ucb1:
-                    max_ucb1 = i.x / i.ni + 2 * np.sqrt(np.log(current.ni) / i.ni)
+                    max_ucb1 = i.x / i.ni + 1 * np.sqrt(C * np.log(current.ni) / i.ni)
                     current = i
         if(not current.isLeaf and len(current.children) == 0):
             current.backpropagate(current.cost)
@@ -83,10 +83,10 @@ def MCTS(grid, n, n_items, n_moves, resource):
     #root.delete()
     return result
 
-def MCTSAgent(grid, n, n_items, n_moves):
+def MCTSAgent(grid, n, n_items, n_moves, C, resource):
     totalScore = 0
     for j in range(n_moves, 0, -1):
-        action = MCTS(grid, n, n_items, j, 10.0)
+        action = MCTS(grid, n, n_items, j, C, resource)
         if(action == (-1, -1, -1, -1)):
             break
         totalScore = totalScore + bejeweledSimulation.oneMove(grid, n, n_items, action[0], action[1], action[2], action[3])
@@ -94,4 +94,4 @@ def MCTSAgent(grid, n, n_items, n_moves):
 
 grid = np.zeros((8, 8))
 bejeweledSimulation.initGrid(grid, 8, 6)
-print(MCTSAgent(grid, 8, 6, 20))
+print(MCTSAgent(grid, 8, 6, 20, 2, 10))
